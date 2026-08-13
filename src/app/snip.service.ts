@@ -14,7 +14,7 @@ export interface LinkData {
   providedIn: 'root'
 })
 export class SnipService {
-  private apiUrl = 'http://localhost:3000/api/links';
+  private apiUrl = '/api/links';
 
   constructor(private http: HttpClient) {}
 
