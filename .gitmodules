@@ -10,3 +10,7 @@
 	path = cli
 	url = file:///c:/Users/tanyb/Desktop/NUS-ISS/day-1-workshop/snip-demo
 	branch = cli
+[submodule "bundle"]
+	path = bundle
+	url = file:///c:/Users/tanyb/Desktop/NUS-ISS/day-1-workshop/snip-demo
+	branch = bundle
