@@ -4,9 +4,33 @@ import path from "path";
 // Configuration
 const PORT = parseInt(process.env.PORT || "3000");
 const RAILWAY_DOMAIN = process.env.RAILWAY_PUBLIC_DOMAIN;
-const BASE_URL = process.env.BASE_URL || 
-  (RAILWAY_DOMAIN ? `https://${RAILWAY_DOMAIN}` : "http://localhost:3000");
+const BASE_URL = process.env.BASE_URL;
 const PUBLIC_DIR = process.env.PUBLIC_DIR;
+
+function normalizeBaseUrl(baseUrl) {
+  return baseUrl ? baseUrl.replace(/\/+$/, "") : baseUrl;
+}
+
+function getPublicBaseUrl(req, requestUrl) {
+  const configured = normalizeBaseUrl(BASE_URL);
+  if (configured) return configured;
+
+  const forwardedHost = req.headers.get("x-forwarded-host");
+  const host = forwardedHost || req.headers.get("host") || requestUrl.host;
+
+  const forwardedProto = req.headers.get("x-forwarded-proto");
+  const proto = forwardedProto || requestUrl.protocol.replace(":", "");
+
+  if (host && proto) {
+    return `${proto}://${host}`;
+  }
+
+  if (RAILWAY_DOMAIN) {
+    return `https://${RAILWAY_DOMAIN}`;
+  }
+
+  return `http://localhost:${PORT}`;
+}
 
 // In-memory storage
 const links = new Map(); // code -> { code, url, shortUrl, hits, createdAt }
@@ -127,10 +151,11 @@ const server = Bun.serve({
         } while (links.has(code));
 
         const now = new Date().toISOString();
+        const publicBaseUrl = getPublicBaseUrl(req, url);
         const linkData = {
           code,
           url: originalUrl,
-          shortUrl: `${BASE_URL}/${code}`,
+          shortUrl: `${publicBaseUrl}/${code}`,
           hits: 0,
           createdAt: now,
         };
@@ -232,7 +257,9 @@ const server = Bun.serve({
   },
 });
 
-console.log(`🚀 Snip server running at ${BASE_URL}`);
+const startupBaseUrl = normalizeBaseUrl(BASE_URL) ||
+  (RAILWAY_DOMAIN ? `https://${RAILWAY_DOMAIN}` : `http://localhost:${PORT}`);
+console.log(`🚀 Snip server running at ${startupBaseUrl}`);
 console.log(`   Listening on port ${PORT}`);
 if (PUBLIC_DIR) {
   console.log(`   Serving static files from ${PUBLIC_DIR}`);
