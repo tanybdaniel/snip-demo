@@ -1,6 +1,7 @@
 name: Build bundle
 
 on:
+    # This workflow is triggered on a schedule and manually via workflow_dispatch.
   schedule:
     # Run at midnight UTC every day
     - cron: '0 0 * * *'
