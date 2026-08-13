@@ -1,16 +1,16 @@
 [submodule "backend"]
 	path = backend
-	url = file:///c:/Users/tanyb/Desktop/NUS-ISS/day-1-workshop/snip-demo
+	url = https://github.com/tanybdaniel/snip-demo.git
 	branch = backend
 [submodule "frontend"]
 	path = frontend
-	url = file:///c:/Users/tanyb/Desktop/NUS-ISS/day-1-workshop/snip-demo
+	url = https://github.com/tanybdaniel/snip-demo.git
 	branch = frontend
 [submodule "cli"]
 	path = cli
-	url = file:///c:/Users/tanyb/Desktop/NUS-ISS/day-1-workshop/snip-demo
+	url = https://github.com/tanybdaniel/snip-demo.git
 	branch = cli
 [submodule "bundle"]
 	path = bundle
-	url = file:///c:/Users/tanyb/Desktop/NUS-ISS/day-1-workshop/snip-demo
+	url = https://github.com/tanybdaniel/snip-demo.git
 	branch = bundle
