@@ -219,11 +219,13 @@ README.md
     // Step 4: Commit in bundle branch (if changes)
     log('Step 4: Committing bundle changes...');
     const bundleStatus = shellQuiet('git status --porcelain', { cwd: bundleDir });
+    let bundleChanged = false;
     
     if (bundleStatus) {
       log('  Changes detected in bundle/');
       shell('git add -A', { cwd: bundleDir });
       shell('git commit -m "Generated: rebuild bundle with latest frontend/backend/cli"', { cwd: bundleDir });
+      bundleChanged = true;
       log('  ✓ Committed bundle changes');
     } else {
       log('  No changes in bundle/ – skipping commit');
@@ -232,16 +234,12 @@ README.md
 
     // Step 5: Update superproject pointer to bundle
     log('Step 5: Bumping bundle submodule pointer in superproject...');
-    const bundlePointerBefore = shellQuiet('git ls-tree HEAD bundle');
-    
-    shell('git submodule update --remote bundle');
-    
-    const bundlePointerAfter = shellQuiet('git ls-tree HEAD bundle');
-    if (bundlePointerBefore !== bundlePointerAfter) {
-      log('  Pointer changed; staging bundle/ for commit');
+    if (bundleChanged) {
+      log('  Bundle changed; staging new pointer');
       shell('git add bundle');
+      log('  ✓ Staged bundle pointer');
     } else {
-      log('  Pointer unchanged');
+      log('  No bundle changes; pointer unchanged');
     }
     log('');
 
