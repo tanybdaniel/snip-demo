@@ -243,16 +243,17 @@ README.md
     }
     log('');
 
-    // Step 6: Commit on main (if bundle changed)
-    log('Step 6: Checking for superproject changes...');
-    const mainStatus = shellQuiet('git status --porcelain', { cwd: repoRoot });
-    
-    if (mainStatus) {
-      log('  Changes detected on main');
+    // Step 6: Commit on main (if changes staged)
+    log('Step 6: Checking for staged changes on main...');
+    try {
+      shellQuiet('git diff --cached --quiet', { cwd: repoRoot });
+      // If no error, there are no staged changes
+      log('  No staged changes – skipping commit');
+    } catch {
+      // git diff --cached --quiet returns 1 if there are changes
+      log('  Staged changes detected');
       shell('git commit -m "Bump bundle submodule"');
       log('  ✓ Committed to main');
-    } else {
-      log('  No changes on main – skipping commit');
     }
     log('');
 
