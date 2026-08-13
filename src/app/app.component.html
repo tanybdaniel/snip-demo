@@ -1,0 +1,76 @@
+<main>
+  <div class="container">
+    <header>
+      <h1>Snip</h1>
+      <p>A tiny URL shortener</p>
+    </header>
+
+    <section class="form-section">
+      <form (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <input
+            type="text"
+            [(ngModel)]="urlInput"
+            name="url"
+            placeholder="Paste a URL (http:// or https://)"
+            class="url-input"
+            [disabled]="loading()"
+          />
+          <button
+            type="submit"
+            class="submit-btn"
+            [disabled]="loading()"
+          >
+            {{ loading() ? 'Creating...' : 'Shorten' }}
+          </button>
+        </div>
+
+        @if (successMessage()) {
+          <div class="success-message">{{ successMessage() }}</div>
+        }
+        @if (errorMessage()) {
+          <div class="error-message">{{ errorMessage() }}</div>
+        }
+      </form>
+    </section>
+
+    <section class="links-section">
+      <h2>Your Links</h2>
+      @if (links().length === 0) {
+        <p class="no-links">No links yet. Create one above!</p>
+      }
+      @if (links().length > 0) {
+        <table class="links-table">
+          <thead>
+            <tr>
+              <th>Short Code</th>
+              <th>Original URL</th>
+              <th>Hits</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (link of links(); track link.code) {
+              <tr>
+                <td>
+                  <a
+                    [href]="link.shortUrl"
+                    target="_blank"
+                    rel="noopener"
+                    class="short-code"
+                    (click)="copyToClipboard(link.shortUrl); $event.preventDefault()"
+                  >
+                    {{ link.code }}
+                  </a>
+                </td>
+                <td class="original-url" [title]="link.url">
+                  {{ link.url }}
+                </td>
+                <td class="hits">{{ link.hits }}</td>
+              </tr>
+            }
+          </tbody>
+        </table>
+      }
+    </section>
+  </div>
+</main>
