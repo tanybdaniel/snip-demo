@@ -1,14 +1,18 @@
+/* Snip App Component – Lovable-inspired dark design */
+
 :host {
   display: block;
   min-height: 100vh;
-  background-color: #f5f5f5;
+  background-color: #0f0f0f;
+  position: relative;
 }
 
 main {
   width: 100%;
   min-height: 100vh;
-  padding: 2rem 1rem;
-  box-sizing: border-box;
+  position: relative;
+  z-index: 1;
+  padding: 4rem 1.5rem 2rem 1.5rem;
 }
 
 .container {
@@ -16,125 +20,147 @@ main {
   margin: 0 auto;
 }
 
+/* ===== HEADER / HERO ===== */
 header {
   text-align: center;
   margin-bottom: 3rem;
+  padding: 1rem 0;
 }
 
 header h1 {
-  font-size: 2.5rem;
+  font-size: 3.5rem;
   font-weight: 700;
-  margin: 0 0 0.5rem 0;
-  color: #222;
+  margin: 0 0 0.75rem 0;
+  color: #ffffff;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
 }
 
 header p {
-  font-size: 1rem;
-  color: #666;
+  font-size: 1.125rem;
+  color: #a0a0a0;
   margin: 0;
+  font-weight: 400;
 }
 
+/* ===== FORM SECTION – Chat-Style Input ===== */
 .form-section {
-  background: white;
+  background: #1a1a1a;
   padding: 2rem;
-  border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
   margin-bottom: 2rem;
 }
 
 .form-group {
   display: flex;
-  gap: 0.75rem;
+  gap: 1rem;
   margin-bottom: 1rem;
 }
 
 .url-input {
   flex: 1;
-  padding: 0.75rem 1rem;
+  padding: 1rem 1.25rem;
   font-size: 1rem;
-  border: 1px solid #ddd;
-  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0.75rem;
+  background-color: rgba(255, 255, 255, 0.05);
+  color: #ffffff;
   font-family: inherit;
   box-sizing: border-box;
-  transition: border-color 0.2s;
+  transition: all 0.2s ease;
+}
+
+.url-input::placeholder {
+  color: #6b6b6b;
 }
 
 .url-input:focus {
   outline: none;
-  border-color: #0066cc;
-  box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.1);
+  background-color: rgba(255, 255, 255, 0.08);
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
 }
 
 .url-input:disabled {
-  background-color: #f9f9f9;
-  color: #999;
+  background-color: rgba(255, 255, 255, 0.03);
+  color: #6b6b6b;
   cursor: not-allowed;
 }
 
 .submit-btn {
-  padding: 0.75rem 1.5rem;
+  padding: 1rem 2rem;
   font-size: 1rem;
   font-weight: 600;
-  color: white;
-  background-color: #0066cc;
+  color: #ffffff;
+  background-color: #3b82f6;
   border: none;
-  border-radius: 8px;
+  border-radius: 0.75rem;
   cursor: pointer;
-  transition: background-color 0.2s;
+  transition: all 0.2s ease;
   white-space: nowrap;
   font-family: inherit;
 }
 
 .submit-btn:hover:not(:disabled) {
-  background-color: #0052a3;
+  background-color: #2563eb;
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
 }
 
 .submit-btn:disabled {
-  background-color: #ccc;
+  background-color: #6b6b6b;
   cursor: not-allowed;
 }
 
+/* ===== FEEDBACK MESSAGES ===== */
 .success-message {
-  padding: 0.75rem 1rem;
-  background-color: #d4edda;
-  color: #155724;
-  border: 1px solid #c3e6cb;
-  border-radius: 8px;
+  padding: 1rem;
+  background-color: rgba(16, 185, 129, 0.1);
+  color: #10b981;
+  border: 1px solid rgba(16, 185, 129, 0.2);
+  border-left: 3px solid #10b981;
+  border-radius: 0.75rem;
   margin-bottom: 1rem;
   font-size: 0.95rem;
 }
 
 .error-message {
-  padding: 0.75rem 1rem;
-  background-color: #f8d7da;
-  color: #721c24;
-  border: 1px solid #f5c6cb;
-  border-radius: 8px;
+  padding: 1rem;
+  background-color: rgba(239, 68, 68, 0.1);
+  color: #ef4444;
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  border-left: 3px solid #ef4444;
+  border-radius: 0.75rem;
   margin-bottom: 1rem;
   font-size: 0.95rem;
 }
 
+/* ===== LINKS SECTION ===== */
 .links-section {
-  background: white;
+  background: #1a1a1a;
   padding: 2rem;
-  border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
 }
 
 .links-section h2 {
   margin: 0 0 1.5rem 0;
-  font-size: 1.5rem;
-  color: #222;
+  font-size: 2rem;
+  color: #ffffff;
+  font-weight: 600;
 }
 
 .no-links {
-  color: #999;
+  color: #6b6b6b;
   text-align: center;
-  padding: 2rem 0;
+  padding: 3rem 0;
   margin: 0;
   font-size: 1rem;
 }
 
+/* ===== TABLE STYLING ===== */
 .links-table {
   width: 100%;
   border-collapse: collapse;
@@ -142,63 +168,86 @@ header p {
 }
 
 .links-table thead {
-  background-color: #f9f9f9;
-  border-bottom: 2px solid #e0e0e0;
+  background-color: rgba(255, 255, 255, 0.03);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .links-table th {
   padding: 1rem;
   text-align: left;
   font-weight: 600;
-  color: #333;
+  color: #a0a0a0;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
 }
 
 .links-table td {
   padding: 1rem;
-  border-bottom: 1px solid #e0e0e0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
   vertical-align: middle;
 }
 
 .links-table tbody tr:hover {
-  background-color: #f9f9f9;
+  background-color: rgba(255, 255, 255, 0.05);
 }
 
 .short-code {
-  color: #0066cc;
-  text-decoration: none;
+  color: #3b82f6;
   font-weight: 600;
-  font-family: 'Courier New', monospace;
+  font-family: "SF Mono", Monaco, "Cascadia Code", "Roboto Mono", Consolas, "Courier New", monospace;
   cursor: pointer;
-  transition: color 0.2s;
+  transition: all 0.2s ease;
+  display: inline-block;
+  padding: 0.35rem 0.75rem;
+  background-color: rgba(59, 130, 246, 0.1);
+  border-radius: 0.5rem;
 }
 
 .short-code:hover {
-  color: #0052a3;
-  text-decoration: underline;
+  color: #2563eb;
+  background-color: rgba(59, 130, 246, 0.15);
+  text-decoration: none;
 }
 
 .original-url {
-  color: #666;
+  color: #a0a0a0;
   word-break: break-word;
   max-width: 400px;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  font-size: 0.95rem;
+}
+
+.original-url:hover {
+  color: #ffffff;
+  text-decoration: underline;
 }
 
 .hits {
-  color: #666;
+  color: #a0a0a0;
   text-align: center;
   font-weight: 500;
 }
 
-@media (max-width: 600px) {
+/* ===== RESPONSIVE DESIGN ===== */
+@media (max-width: 768px) {
   header h1 {
-    font-size: 2rem;
+    font-size: 2.5rem;
+  }
+
+  header p {
+    font-size: 1rem;
+  }
+
+  main {
+    padding: 3rem 1rem 2rem 1rem;
   }
 
   .form-group {
     flex-direction: column;
+    gap: 0.75rem;
   }
 
   .submit-btn {
@@ -216,5 +265,36 @@ header p {
 
   .original-url {
     max-width: 200px;
+  }
+
+  .form-section,
+  .links-section {
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  header h1 {
+    font-size: 2rem;
+  }
+
+  main {
+    padding: 2.5rem 0.75rem 1.5rem 0.75rem;
+  }
+
+  .links-table {
+    font-size: 0.8rem;
+  }
+
+  .links-table th {
+    padding: 0.75rem 0.5rem;
+  }
+
+  .links-table td {
+    padding: 0.75rem 0.5rem;
+  }
+
+  .original-url {
+    max-width: 150px;
   }
 }
