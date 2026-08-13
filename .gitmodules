@@ -1,0 +1,12 @@
+[submodule "backend"]
+	path = backend
+	url = file:///c:/Users/tanyb/Desktop/NUS-ISS/day-1-workshop/snip-demo
+	branch = backend
+[submodule "frontend"]
+	path = frontend
+	url = file:///c:/Users/tanyb/Desktop/NUS-ISS/day-1-workshop/snip-demo
+	branch = frontend
+[submodule "cli"]
+	path = cli
+	url = file:///c:/Users/tanyb/Desktop/NUS-ISS/day-1-workshop/snip-demo
+	branch = cli
