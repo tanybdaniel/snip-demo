@@ -5,7 +5,8 @@ on:
     branches:
       - main
     paths:
-      # Trigger when bundle submodule pointer changes
+      # `bundle` is the submodule gitlink in main; this fires when a new bundle
+      # release commit is pinned by the superproject.
       - 'bundle'
       # Also trigger when this workflow itself changes (for testing)
       - '.github/workflows/docker.yml'
