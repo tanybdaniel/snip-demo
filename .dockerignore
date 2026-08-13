@@ -1,0 +1,11 @@
+node_modules
+npm-debug.log
+.git
+.gitmodules
+.gitignore
+dist
+backend
+frontend
+cli
+scripts
+README.md

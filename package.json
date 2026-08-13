@@ -1,0 +1,15 @@
+{
+  "name": "snip-bundle",
+  "version": "1.0.0",
+  "description": "Snip – All-in-one bundle (server + UI + CLI)",
+  "main": "server.js",
+  "scripts": {
+    "start": "bun server.js"
+  },
+  "keywords": [
+    "snip",
+    "url-shortener"
+  ],
+  "author": "",
+  "license": "MIT"
+}
